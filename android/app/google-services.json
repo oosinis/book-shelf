@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "819360492367",
+    "project_id": "book-shelf-920bb",
+    "storage_bucket": "book-shelf-920bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819360492367:android:968e4abbb5a305f8b0b33a",
+        "android_client_info": {
+          "package_name": "com.example.book_shelf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1EWqJeewuvTjdauVa40DS5qofAvDOX3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
