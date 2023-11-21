@@ -12,7 +12,20 @@
           "package_name": "com.example.book_shelf"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "819360492367-22lh6go1t68752di31uo2s1n1ttg9unt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.book_shelf",
+            "certificate_hash": "7d0340c9bb0fd14050fafe235a49d57c52a8a693"
+          }
+        },
+        {
+          "client_id": "819360492367-m03qn1efe7g0slroult24n58vj0tuqrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA1EWqJeewuvTjdauVa40DS5qofAvDOX3U"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819360492367-m03qn1efe7g0slroult24n58vj0tuqrg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "819360492367-6h91fo0hl3gekon0kuqkis4ugfeuba3o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bookShelf"
+              }
+            }
+          ]
         }
       }
     }

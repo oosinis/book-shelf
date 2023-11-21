@@ -67,6 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '819360492367',
     projectId: 'book-shelf-920bb',
     storageBucket: 'book-shelf-920bb.appspot.com',
+    androidClientId: '819360492367-22lh6go1t68752di31uo2s1n1ttg9unt.apps.googleusercontent.com',
+    iosClientId: '819360492367-6h91fo0hl3gekon0kuqkis4ugfeuba3o.apps.googleusercontent.com',
     iosBundleId: 'com.example.bookShelf',
   );
 
@@ -76,6 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '819360492367',
     projectId: 'book-shelf-920bb',
     storageBucket: 'book-shelf-920bb.appspot.com',
+    androidClientId: '819360492367-22lh6go1t68752di31uo2s1n1ttg9unt.apps.googleusercontent.com',
+    iosClientId: '819360492367-dpf84kvmp62p6l6h10dhtd2o5flv0suu.apps.googleusercontent.com',
     iosBundleId: 'com.example.bookShelf.RunnerTests',
   );
 }

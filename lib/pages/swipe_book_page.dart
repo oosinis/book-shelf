@@ -1,5 +1,6 @@
 import 'package:book_shelf/models/book.dart';
 import 'package:book_shelf/pages/book_details_page.dart';
+import 'package:book_shelf/theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:swipe_cards/swipe_cards.dart';
@@ -42,10 +43,10 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
   @override
   void initState() {
     super.initState();
-    _loadGames();
+    _loadBooks();
   }
 
-  Future<void> _loadGames() async {
+  Future<void> _loadBooks() async {
     List<Book> fetchedBooks = await firestoreService.fetchBooks();
     setState(() {
       _books = fetchedBooks;
@@ -64,7 +65,7 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(229, 193, 138, 1),
+      backgroundColor: CustomTheme.color1,
       key: _scaffoldKey,
       body: Center(
           child: loading

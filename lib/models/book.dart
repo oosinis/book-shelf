@@ -13,7 +13,7 @@ class Book {
     return Book(
       name: data['name'],
       author: data['author'],
-      description: data['color']
+      description: data['description']
     );
   }
 }

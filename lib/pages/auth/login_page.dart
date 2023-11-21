@@ -1,3 +1,4 @@
+import 'package:book_shelf/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -62,17 +63,17 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800],
+      backgroundColor: CustomTheme.color1,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
                 // icon
                 const Icon(
-                  Icons.lock,
+                  Icons.book,
                   size: 100,
                 ),
                 const SizedBox(height: 50),

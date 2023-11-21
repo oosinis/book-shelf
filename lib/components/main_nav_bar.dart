@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+import '../theme.dart';
+
 class MainNavBar extends StatelessWidget {
   void Function(int)? onTabChange;
   MainNavBar({super.key, required this.onTabChange});
@@ -10,10 +12,10 @@ class MainNavBar extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
       child: GNav(
-        color: Colors.black87,
-        activeColor: Color.fromRGBO(229, 193, 138, 1),
-        tabActiveBorder: Border.all(color: Colors.black54),
-        tabBackgroundColor: Colors.black87,
+        color: CustomTheme.color2,
+        activeColor: CustomTheme.color1,
+        tabActiveBorder: Border.all(color: CustomTheme.color2),
+        tabBackgroundColor: CustomTheme.color2,
         tabBorderRadius: 25,
         onTabChange: (value) => onTabChange!(value),
          tabs: const [

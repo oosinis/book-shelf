@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../components/tile_comp.dart';
 import '../models/tile.dart';
+import '../theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,22 +17,19 @@ class _HomePageState extends State<HomePage> {
 
   List tiles = [
     Tile(
-      title: "GTA SALE",
-      description: "Big sale for this game",
-      imagePath: ""),
+      title: "Sipsik",
+      description: "Audioraamat!",),
     Tile(
-      title: "GTA NEWS", 
-      description: "New Update", 
-      imagePath: ""),
+      title: "Astridi raamatud", 
+      description: "Vaata uut väjaannet!",), 
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(229, 193, 138, 1),
+      backgroundColor: CustomTheme.color1,
       body: Column(
         children: [
-          Center(child: Text("Welcome " + user.email!),),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.vertical,

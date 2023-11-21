@@ -4,14 +4,14 @@ import '../models/book.dart';
 
 class FirestoreService {
   final CollectionReference books =
-      FirebaseFirestore.instance.collection('games');
+      FirebaseFirestore.instance.collection('books');
 
   Future<List<Book>> fetchBooks() async {
     try {
       QuerySnapshot querySnapshot = await books.get();
       return querySnapshot.docs.map((doc) => Book.fromFirestore(doc)).toList();
     } catch (error){
-      print('Error fetching games: $error');
+      print('Error fetching books: $error');
       throw error;
     }
   }

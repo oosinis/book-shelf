@@ -1,10 +1,11 @@
+import 'package:book_shelf/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../components/main_nav_bar.dart';
 import 'home_page.dart';
 import 'profile_page.dart';
-import 'swipe_game_page.dart';
+import 'swipe_book_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -34,13 +35,13 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(229, 193, 138, 1),
+      backgroundColor: CustomTheme.color1,
       appBar: AppBar(
         title: const Text(
-          'GameSpot',
+          'BookShelf',
           style: TextStyle(fontSize: 40, color: Colors.black87),
         ),
-        backgroundColor: const Color.fromRGBO(229, 193, 138, 1),
+        backgroundColor: CustomTheme.color1,
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(

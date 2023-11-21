@@ -1,3 +1,4 @@
+import 'package:book_shelf/theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
@@ -16,12 +17,12 @@ class CustomText extends StatelessWidget {
         obscureText: obscureText,
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
+            borderSide: BorderSide(color: CustomTheme.color5),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade400),
+            borderSide: BorderSide(color: CustomTheme.color2),
           ),
-          fillColor: Colors.grey.shade200,
+          fillColor: CustomTheme.color6,
           filled: true,
           hintText: hindText,
         ),

@@ -18,10 +18,6 @@ class TileComp extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            tile.imagePath,
-            height: 140,
-          ),
           Text(
             tile.title,
             style:
