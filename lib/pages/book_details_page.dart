@@ -20,7 +20,7 @@ class _BookDetailsPageState extends State<BookDetailsPage> {
         elevation: 0,
         backgroundColor: const Color.fromRGBO(229, 193, 138, 1),
         title: Text(
-          widget.book.name.toString(),
+          widget.book.title.toString(),
           style: const TextStyle(
             fontSize: 40,
             color: Colors.black87,

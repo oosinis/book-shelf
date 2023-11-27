@@ -1,3 +1,4 @@
+import 'package:book_shelf/APIs/book_api.dart';
 import 'package:book_shelf/models/book.dart';
 import 'package:book_shelf/pages/book_details_page.dart';
 import 'package:book_shelf/theme.dart';
@@ -16,18 +17,22 @@ class SwipeBookPage extends StatefulWidget {
 
 class Content {
   final String text;
-  final Color color;
+  final String thumbnail;
 
-  Content({required this.text, required this.color});
+  Content({required this.text, required this.thumbnail});
 }
 
 class _SwipeBookPageState extends State<SwipeBookPage> {
-  final List<SwipeItem> _swipeItems = <SwipeItem>[];
+  List<SwipeItem> _swipeItems = <SwipeItem>[];
   MatchEngine? _matchEngine;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   final FirestoreService firestoreService = FirestoreService();
+  final BookApi bookApi = BookApi();
   List<Book> _books = [];
   bool loading = true;
+
+  int _currentPage = 0;
+  int _itemsPerPage = 40;
 
   void navigateToBookDetails(int index) {
     Navigator.push(
@@ -47,13 +52,22 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
   }
 
   Future<void> _loadBooks() async {
-    List<Book> fetchedBooks = await firestoreService.fetchBooks();
+    setState(() {
+      loading = true;
+    });
+
+    List<Book> fetchedBooks = await bookApi.getBooksQuery(
+      startIndex: _currentPage * _itemsPerPage,
+      maxResults: _itemsPerPage,
+    );
+
     setState(() {
       _books = fetchedBooks;
+      _swipeItems = [];
 
-      for (int i = 0; i < _books.length; i++) {
+      for (int i = 0; i < fetchedBooks.length; i++) {
         _swipeItems.add(SwipeItem(
-          content: Content(text: _books[i].name, color: Colors.red),
+          content: Content(text: fetchedBooks[i].title, thumbnail: fetchedBooks[i].imageLinks?['thumbnail']),
         ));
       }
 
@@ -62,15 +76,21 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
     });
   }
 
+  void _handleStackFinished() {
+    _currentPage++;
+    _loadBooks();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomTheme.color1,
       key: _scaffoldKey,
       body: Center(
-          child: loading
-              ? CircularProgressIndicator()
-              : Stack(children: [
+        child: loading
+            ? CircularProgressIndicator()
+            : Stack(
+                children: [
                   Container(
                     height:
                         (MediaQuery.of(context).size.height - kToolbarHeight) *
@@ -84,24 +104,30 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20.0),
-                              color: _swipeItems[index].content.color,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  _swipeItems[index].content.thumbnail,
+                                  ),
+                                ),
                             ),
                             alignment: Alignment.center,
-                            child: Text(
+                            /* child: Text(
                               _swipeItems[index].content.text,
                               style: const TextStyle(fontSize: 70),
                               textAlign: TextAlign.center,
-                            ),
+                            ), */
                           ),
                         );
                       },
-                      onStackFinished: () {},
+                      onStackFinished: _handleStackFinished,
                       leftSwipeAllowed: true,
                       rightSwipeAllowed: true,
                       fillSpace: true,
                     ),
                   ),
-                ])),
+                ],
+              ),
+      ),
     );
   }
 }

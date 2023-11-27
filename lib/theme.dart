@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+// create different themes so user can change, with those colors
 class CustomTheme {
   static const Color color1 =  Color(0xFFD4C7B4);
   static const Color color2 =  Color(0xFF2D2D23);
