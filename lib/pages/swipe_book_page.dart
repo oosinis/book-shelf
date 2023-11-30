@@ -111,11 +111,6 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
                                 ),
                             ),
                             alignment: Alignment.center,
-                            /* child: Text(
-                              _swipeItems[index].content.text,
-                              style: const TextStyle(fontSize: 70),
-                              textAlign: TextAlign.center,
-                            ), */
                           ),
                         );
                       },

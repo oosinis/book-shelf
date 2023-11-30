@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../components/main_nav_bar.dart';
 import 'home_page.dart';
-import 'profile_page.dart';
+import 'profile/profile_page.dart';
 import 'swipe_book_page.dart';
 
 class MainPage extends StatefulWidget {

@@ -28,9 +28,9 @@ class BookApi {
   }
 
   Future<List<Book>> getBooksQuery({
-    String query = 'a',
+    String query = 'car',
     String orderBy = 'newest',
-    int maxResults = 5,
+    int maxResults = 40,
     int startIndex = 0,
   }) async {
     final response = await http.get(Uri.parse(
