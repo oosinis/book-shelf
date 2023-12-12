@@ -1,8 +1,7 @@
 import 'package:book_shelf/APIs/book_api.dart';
-import 'package:book_shelf/models/book.dart';
+import 'package:book_shelf/models/book_tile.dart';
 import 'package:book_shelf/pages/book_details_page.dart';
 import 'package:book_shelf/theme.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
@@ -15,20 +14,13 @@ class SwipeBookPage extends StatefulWidget {
   _SwipeBookPageState createState() => _SwipeBookPageState();
 }
 
-class Content {
-  final String text;
-  final String thumbnail;
-
-  Content({required this.text, required this.thumbnail});
-}
-
 class _SwipeBookPageState extends State<SwipeBookPage> {
   List<SwipeItem> _swipeItems = <SwipeItem>[];
   MatchEngine? _matchEngine;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   final FirestoreService firestoreService = FirestoreService();
   final BookApi bookApi = BookApi();
-  List<Book> _books = [];
+  List<BookTile> _books = [];
   bool loading = true;
 
   int _currentPage = 0;
@@ -39,7 +31,7 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
       context,
       MaterialPageRoute(
         builder: (context) => BookDetailsPage(
-          book: _books[index],
+          bookId: _books[index].id,
         ),
       ),
     );
@@ -56,7 +48,7 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
       loading = true;
     });
 
-    List<Book> fetchedBooks = await bookApi.getBooksQuery(
+    List<BookTile> fetchedBooks = await bookApi.getBooks(
       startIndex: _currentPage * _itemsPerPage,
       maxResults: _itemsPerPage,
     );
@@ -67,7 +59,8 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
 
       for (int i = 0; i < fetchedBooks.length; i++) {
         _swipeItems.add(SwipeItem(
-          content: Content(text: fetchedBooks[i].title, thumbnail: fetchedBooks[i].imageLinks?['thumbnail']),
+          content: fetchedBooks[i],
+          //likeAction: () => firestoreService.saveBook("123",fetchedBooks[i])
         ));
       }
 
@@ -115,9 +108,8 @@ class _SwipeBookPageState extends State<SwipeBookPage> {
                         );
                       },
                       onStackFinished: _handleStackFinished,
-                      leftSwipeAllowed: true,
-                      rightSwipeAllowed: true,
                       fillSpace: true,
+                      upSwipeAllowed: false,
                     ),
                   ),
                 ],

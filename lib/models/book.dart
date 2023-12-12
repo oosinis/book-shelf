@@ -38,10 +38,10 @@ class Book {
     );
   }
 
-  factory Book.fromJson(Map<String, dynamic> json) {
+  factory Book.fromJson(String id, Map<String, dynamic> json) {
     return Book(
-      id: json['id'] ?? '', 
-      title: json['title'] ?? 'No Title',
+      id: id,
+      title: json['volumeInfo']['title'] ?? 'No Title',
       authors: List<String>.from(json['authors'] ?? ['No Author']),
       description: json['description'] ?? 'No Description',
       publisher: json['publisher'] ?? 'No Publisher',
